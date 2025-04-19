@@ -1,9 +1,3 @@
-By:
-------
-Anirudh Kashyap Ramesh
-1002216351
-axk6351@mavs.uta.edu
-
 
 Wine Quality Prediction
 =======================
