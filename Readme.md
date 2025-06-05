@@ -1,32 +1,37 @@
 
 Wine Quality Prediction
-=======================
 
-This project focuses on predicting the quality of wine (binary classification: good or bad)
-based on its chemical properties. The dataset used includes features like acidity,
-alcohol content, sulphates, and more.
+This project focuses on predicting the quality of wine (binary classification: good or bad) based on its chemical properties. The dataset used includes features like acidity, alcohol content, sulphates, and more.
 
-The primary classifier used is **Random Forest**. To optimize its performance,
-a grid search (using GridSearchCV) was performed to tune hyperparameters.
-The best combination of parameters from the grid search was then used
-for training and evaluation in the main code.
+The primary classifier used is Random Forest. To optimize its performance, a grid search (using GridSearchCV) was performed to tune hyperparameters. The best combination of parameters from the grid search was then used for training and evaluation in the main code.
 
-------------------------------------------------------------
+### 🔍 Unsupervised Feature Enrichment with K-Means
 
-Files Description
------------------
+K-Means clustering was introduced to uncover latent patterns in the feature space. Each wine sample was assigned a cluster label, which was added as a new input feature. This enriched the dataset with unsupervised structure, offering insights into how chemical properties group together — even before labeling.
 
-Main.py
+Additionally, the clusters were visualized using:
+- PCA scatter plots to inspect spatial separation of clusters.
+- Cluster vs. wine quality distribution to assess alignment with labels.
+
+---
+
+## Files Description
+
+### Main.py
 - Implements a Random Forest Classifier.
+- Applies K-Means clustering to extract latent structure as a new feature.
 - Splits the dataset into 80% training and 20% validation.
 - Evaluates performance on:
   - Training set
   - Validation set
   - Dummy test set (wine_data_test.csv)
-- Also performs 10-fold stratified cross-validation.
-- Prints accuracy and confusion matrices for each task.
+- Performs 10-fold stratified cross-validation.
+- Generates visualizations for:
+  - K-Means clustering using PCA (2D scatter plot)
+  - Cluster-wise distribution of wine quality
+- Prints accuracy and confusion matrices for all evaluations.
 
-Grid_Search.py
+### Grid_Search.py
 - Performs hyperparameter tuning using GridSearchCV from scikit-learn.
 - Explores combinations of:
   - Number of estimators
@@ -36,9 +41,10 @@ Grid_Search.py
   - Best parameter combination
   - Accuracy and confusion matrix for the best model on both train and validation sets
 
-Learning_Curve.py
+### Learning_Curve.py
 - Visualizes a learning curve using the final chosen Random Forest model.
 - Shows how training and validation accuracy vary with increasing training set size.
+
 
 ------------------------------------------------------------
 
